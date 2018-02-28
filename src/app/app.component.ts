@@ -7,14 +7,9 @@ import {ViewChild, AfterViewInit, ElementRef, Component } from '@angular/core';
 })
 
 
-export class AppComponent implements AfterViewInit{
-
-    code_submission = ''; //will store user code from iframe    
-    doc = null; //will hold iframe document 
+export class AppComponent implements AfterViewInit, ControlValueAccessor{
 
     @ViewChild('amen') iframe: ElementRef; //code iframe
-
-    constructor() {};
 
 
     /**
@@ -22,8 +17,9 @@ export class AppComponent implements AfterViewInit{
      * @param {ElementRef} - nativeElement of the iframe ie iframe.nativeElement.contentX
      */
     updateResult(doc){
-	let content  = "<canvas id='myCanvas' width='200' height='100' style='border:1px solid #d3d3d3;'>Your browser does not support the HTML5 canvas tag.</canvas>";
-	
+	let content  = "<script src='https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/p5.js'></script>"+ "<script>function setup() {}function draw(){ellipse(50, 50, 80, 80);}</script>";
+
+    
 	this.doc.open();
 	this.doc.write(content);
 	this.doc.close();
