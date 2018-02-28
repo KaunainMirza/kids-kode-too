@@ -17,8 +17,9 @@ export class AppComponent implements AfterViewInit, ControlValueAccessor{
      * @param {ElementRef} - nativeElement of the iframe ie iframe.nativeElement.contentX
      */
     updateResult(doc){
-	let content  = "<script src='https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/p5.js'></script>"+ "<script>function setup() {}function draw(){ellipse(50, 50, 80, 80);}</script>";
-
+	let p5  = "<script src='https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/p5.js'></script>"
+	let code ="<script>function setup() {}function draw(){"+this.code_submission+"}</script>";
+	let content = p5+code;
     
 	this.doc.open();
 	this.doc.write(content);
